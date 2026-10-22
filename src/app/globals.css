@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Pixel Toolbox design tokens.
+ * Light: warm off-white canvas, white surfaces, deep navy ink, one indigo accent.
+ * Dark: deep blue-black canvas, slightly raised surfaces, soft periwinkle accent.
+ * Tool tints (indigo / rose / teal) are only used for small identity marks.
+ */
+:root {
+  --radius: 0.75rem;
+
+  --background: #f6f6f3;
+  --foreground: #151826;
+  --card: #ffffff;
+  --card-foreground: #151826;
+  --popover: #ffffff;
+  --popover-foreground: #151826;
+
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-foreground: #ffffff;
+  --secondary: #ecebe6;
+  --secondary-foreground: #1d2133;
+  --muted: #efeee9;
+  --muted-foreground: #5b6072;
+  --accent: #eeedf8;
+  --accent-foreground: #1d2133;
+
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --destructive-soft: #fef2f2;
+  --success: #15803d;
+  --success-soft: #ecfdf3;
+  --warning: #b45309;
+  --warning-soft: #fffbeb;
+
+  --border: #e3e2dc;
+  --input: #d9d8d1;
+  --ring: #6366f1;
+
+  --brand: #1b1f3b;
+  --brand-foreground: #ffffff;
+
+  --tool-qr: #4f46e5;
+  --tool-qr-soft: #eef0ff;
+  --tool-video: #e11d48;
+  --tool-video-soft: #fff1f3;
+  --tool-image: #0d9488;
+  --tool-image-soft: #ecfdf9;
+
+  --checker-a: #ffffff;
+  --checker-b: #e9e8e3;
+
+  --shadow-soft: 0 1px 2px rgb(21 24 38 / 0.04), 0 4px 16px -6px rgb(21 24 38 / 0.08);
+}
+
+.dark {
+  --background: #0b0d14;
+  --foreground: #e9ebf3;
+  --card: #12151f;
+  --card-foreground: #e9ebf3;
+  --popover: #161a26;
+  --popover-foreground: #e9ebf3;
+
+  --primary: #8b8dfb;
+  --primary-hover: #a3a5ff;
+  --primary-foreground: #0b0c1d;
+  --secondary: #1c2030;
+  --secondary-foreground: #e9ebf3;
+  --muted: #181c29;
+  --muted-foreground: #9aa0b4;
+  --accent: #1f2335;
+  --accent-foreground: #e9ebf3;
+
+  --destructive: #f87171;
+  --destructive-foreground: #1a0606;
+  --destructive-soft: #2a1215;
+  --success: #4ade80;
+  --success-soft: #0f2418;
+  --warning: #fbbf24;
+  --warning-soft: #2a2010;
+
+  --border: #242939;
+  --input: #2d3346;
+  --ring: #8b8dfb;
+
+  --brand: #8b8dfb;
+  --brand-foreground: #0b0c1d;
+
+  --tool-qr: #a5a8ff;
+  --tool-qr-soft: #1d1f3d;
+  --tool-video: #fb7185;
+  --tool-video-soft: #33141d;
+  --tool-image: #2dd4bf;
+  --tool-image-soft: #0d2a28;
+
+  --checker-a: #1b1f2c;
+  --checker-b: #232838;
+
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.5);
+}
+
+@theme inline {
+  --font-sans: var(--font-sans-family);
+  --font-mono: var(--font-mono-family);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-tool-qr: var(--tool-qr);
+  --color-tool-qr-soft: var(--tool-qr-soft);
+  --color-tool-video: var(--tool-video);
+  --color-tool-video-soft: var(--tool-video-soft);
+  --color-tool-image: var(--tool-image);
+  --color-tool-image-soft: var(--tool-image-soft);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --shadow-soft: var(--shadow-soft);
+
+  --animate-progress-indeterminate: progress-indeterminate 1.4s ease-in-out infinite;
+  @keyframes progress-indeterminate {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(250%);
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  h1,
+  h2,
+  h3 {
+    @apply tracking-tight text-balance;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 25%, transparent);
+  }
+}
+
+@layer utilities {
+  /* Real transparency preview: the checkerboard is CSS only, never part of an export. */
+  .bg-checker {
+    background-color: var(--checker-a);
+    background-image:
+      linear-gradient(45deg, var(--checker-b) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--checker-b) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--checker-b) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--checker-b) 75%);
+    background-size: 16px 16px;
+    background-position:
+      0 0,
+      0 8px,
+      8px -8px,
+      -8px 0;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
